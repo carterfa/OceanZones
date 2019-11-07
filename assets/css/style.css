@@ -3,23 +3,31 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.zoneTitle{
+    margin-left: .5em;
+    color: white;
+}
+
+#epiZone {
+    position: static;
+}
+
 .land {
     width: 100%;
     height: 500px;
     margin: 0;
     display: flex;
+    background-image: url("../images/land.jpg");
+    background-size: cover;
+    background-color: rgb(170, 220, 240);
+    border-bottom: 4px solid white;
 }
 
-.land h1{
-    color: black;
-    align-self: flex-end;
-    margin-bottom: 0;
-}
-
-.ocean h1 {
+.ocean h4, .land h4 {
+    font-size: 2em;
     color: white;
     align-self: flex-end;
-    margin-bottom: 0;
+    margin: 0 auto;
 }
 
 .ocean {
@@ -34,7 +42,7 @@ body {
     background-color: #86d2e7;
 }
 
-.sunlit-last {
+.sunlitLast {
     background-color: #86d2e7;
     background-image: linear-gradient(#86d2e7, #263069);
 }
@@ -43,7 +51,7 @@ body {
     background-color: #263069;
 }
 
-.twilit-last {
+.twilitLast {
     background-color: #263069;
     background-image: linear-gradient(#263069, #000e38)
 }
