@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+}
+
+.land {
+    width: 100%;
+    height: 500px;
+    margin: 0;
+}
+
+.ocean {
+    width: 100%;
+    height: 1000px;
+    margin: 0;
+    border-bottom: 4px solid white;
+}
+
+.sunlit {
+    background-color: #86d2e7;
+}
+
+.sunlit-last {
+    background-color: #86d2e7;
+    background-image: linear-gradient(#86d2e7, #263069);
+}
+
+.twilit {
+    background-color: #263069;
+}
+
+.twilit-last {
+    background-color: #263069;
+    background-image: linear-gradient(#263069, #000e38)
+}
+
+.midnight {
+    background-color: #000e38;
+}
+
+.oceanfloor {
+    background-color: black;
+    height: 100px;
+}
