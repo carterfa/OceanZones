@@ -1,63 +1,92 @@
+let feet = false;
 
 function deepText() {
-    let deep = parseInt(($(window).scrollTop() + $(window).height() - 500) / 10);
-    if (deep < 0) {
-        $("#depthTxt").text("0m");
+
+    //calculates correct height
+    let deepm = parseInt(($(window).scrollTop() + ($(window).height() / 2) - 500) / 10);
+    let sf = "m";
+
+    //runs conversion to feet if toggled
+    if (feet === true) {
+        deepTxt = parseInt(deepm * 3.28);
+        sf = "ft";
     } else {
-        $("#depthTxt").text(deep + "m");
+        deepTxt = deepm;
+        sf = "m";
     }
+
+    //displays text in the DOM
+    if (deepm < 0) {
+        $("#depthTxt").css("display", "none");
+    } else if (deepm > 11000) {
+        $("#depthTxt").css("display", "none");
+    }
+    else {
+        $("#depthTxt").css("display", "block");
+        $("#depthTxt").text(deepTxt + sf);
+    }
+
+}
+
+function zoneScroll(windowTop) {
+
+    let zone;
+
+    //epipelagic zone scrolling
+    if (windowTop > 500 && windowTop < 2500) {
+        zone = $("#epiZone");
+    } else {
+        $("#epiZone").css("position", "static");
+    }
+    //mesopelagic zone scrolling
+    if (windowTop > 2500 && windowTop < 10500) {
+        zone = $("#mesoZone");
+    } else {
+        $("#mesoZone").css("position", "static");
+    }
+    //bathypelagic zone scrolling
+    if (windowTop > 10500 && windowTop < 40500) {
+        zone = $("#bathyZone");
+    } else {
+        $("#bathyZone").css("position", "static");
+    }
+    //abyssopelagic zone scrolling
+    if (windowTop > 40500 && windowTop < 60500) {
+        zone = $("#abyssZone");
+    } else {
+        $("#abyssZone").css("position", "static");
+    }
+    //hadopelagic zone scrolling
+    if (windowTop > 60500) {
+        zone = $("#hadoZone");
+    } else {
+        $("#hadoZone").css("position", "static");
+    }
+
+    if (zone) {
+        zone.css("position", "fixed");
+        zone.css("top", 0);
+        zone.css("left", 0);
+    }
+
 }
 
 $(document).ready(function () {
+    //depth gauge persistence
+    deepText();
     //sticky title functions
     $(window).scroll(function () {
         deepText();
-
         let windowTop = $(window).scrollTop();
-        //epipelagic zone scrolling
-        if (windowTop > 500 && windowTop < 2500) {
-            $("#epiZone").css("position", "fixed");
-            $("#epiZone").css("top", 0);
-            $("#epiZone").css("left", 0);
-        } else {
-            $("#epiZone").css("position", "static");
-        }
+        zoneScroll(windowTop);
 
-        //mesopelagic zone scrolling
-        if (windowTop > 2500 && windowTop < 10500) {
-            $("#mesoZone").css("position", "fixed");
-            $("#mesoZone").css("top", 0);
-            $("#mesoZone").css("left", 0);
-        } else {
-            $("#mesoZone").css("position", "static");
-        }
+    })
 
-        //bathypelagic zone scrolling
-        if (windowTop > 10500 && windowTop < 40500) {
-            $("#bathyZone").css("position", "fixed");
-            $("#bathyZone").css("top", 0);
-            $("#bathyZone").css("left", 0);
-        } else {
-            $("#bathyZone").css("position", "static");
-        }
-
-        //abyssopelagic zone scrolling
-        if (windowTop > 40500 && windowTop < 60500) {
-            $("#abyssZone").css("position", "fixed");
-            $("#abyssZone").css("top", 0);
-            $("#abyssZone").css("left", 0);
-        } else {
-            $("#abyssZone").css("position", "static");
-        }
-
-        //hadopelagic zone scrolling
-        if (windowTop > 60500) {
-            $("#hadoZone").css("position", "fixed");
-            $("#hadoZone").css("top", 0);
-            $("#hadoZone").css("left", 0);
-        } else {
-            $("#hadoZone").css("position", "static");
-        }
+    //changes units
+    $(".unitTogl").on("click", function () {
+        feet = !feet;
+        if (feet) { $(".unitTogl").text("FT"); }
+         else { $(".unitTogl").text("M"); }
     })
 
 })

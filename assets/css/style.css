@@ -11,13 +11,18 @@ body {
     width: 100%;
 }
 
-#depthTxt{
+#depthTxt {
     position: fixed;
-    bottom: 0;
+    bottom: 50%;
     right: 0;
     margin: 0;
     color: white;
     margin-right: .5em;
+    border-bottom: white solid 2px;
+}
+
+.zoneDiv {
+    border-top: 4px solid white;
 }
 
 .land {
@@ -28,7 +33,6 @@ body {
     background-image: url("../images/land.jpg");
     background-size: cover;
     background-color: rgb(170, 220, 240);
-    border-bottom: 4px solid white;
 }
 
 .ocean h4, .land h4 {
@@ -72,13 +76,36 @@ body {
     background-color: #000e38;
 }
 
+.midnightLast {
+    background-color: #000e38;
+    height: 950px;
+}
+
 .oceanfloor {
     background-color: black;
-    height: 100px;
+    height: 500px;
+}
+
+.unitTogl {
+    position: fixed;
+    cursor: pointer;
+    top: 10px;
+    right: 10px;
+    display: block;
+    width: 40px;
+    margin: 0;
+    font-size: 1em;
+    line-height: 2em;
+    color: white;
+    text-align: center;
+    background-color: rgb(60, 60, 60);
+    background-color: rgba(60, 60, 60, 0.685);
+    -webkit-transition: .3s;
+    transition: .3s;
 }
 
 @media screen and (max-width: 550px) {
-    .ocean h4, .land h4, .zoneTitle {
+    h1, .ocean h4, .land h4, .zoneTitle {
         font-size: 1em;
     }
 }
