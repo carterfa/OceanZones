@@ -3,13 +3,11 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.zoneTitle{
+.zoneTitle {
     margin-left: .5em;
     color: white;
-}
-
-#epiZone {
     position: static;
+    width: 100%;
 }
 
 .land {
@@ -27,7 +25,10 @@ body {
     font-size: 2em;
     color: white;
     align-self: flex-end;
-    margin: 0 auto;
+    margin-bottom: 0;
+    width: 100%;
+    text-align: right;
+    margin-right: .5em;
 }
 
 .ocean {
