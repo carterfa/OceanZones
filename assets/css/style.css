@@ -4,10 +4,20 @@ body {
 }
 
 .zoneTitle {
+    font-size: 2em;
     margin-left: .5em;
     color: white;
     position: static;
     width: 100%;
+}
+
+#depthTxt{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+    color: white;
+    margin-right: .5em;
 }
 
 .land {
@@ -29,14 +39,15 @@ body {
     width: 100%;
     text-align: right;
     margin-right: .5em;
+    display: none;
 }
 
 .ocean {
     width: 100%;
     height: 1000px;
     margin: 0;
-    border-bottom: 4px solid white;
     display: flex;
+    /* border-bottom: 4px solid white; */
 }
 
 .sunlit {
@@ -64,4 +75,10 @@ body {
 .oceanfloor {
     background-color: black;
     height: 100px;
+}
+
+@media screen and (max-width: 550px) {
+    .ocean h4, .land h4, .zoneTitle {
+        font-size: 1em;
+    }
 }
