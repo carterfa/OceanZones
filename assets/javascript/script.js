@@ -1,32 +1,54 @@
-const distUnits = ["m", "ft"]
+const distUnits = ["m", "ft", "mi", "km"];
+const presUnits = ["atm"];
 let distIdx = 0;
-let sf = distUnits[distIdx];
+let presIdx = 0;
+let sfd = distUnits[distIdx];
+let sfp = presUnits[presIdx];
 
-function deepText() {
+function depthGauge() {
 
     //calculates correct height
     const winAdj = $(window).scrollTop() + ($(window).height() / 2);
     const topHt = parseInt($(".top").css("height"));
     let deepm = parseInt((winAdj - topHt) / 10);
 
+    let presTxt = parseInt(1 + (deepm / 10));
 
-    //runs conversions
-    if (distIdx = 1) {
-        //feet
-        deepTxt = parseInt(deepm * 3.28);
-    } else {
-        deepTxt = deepm;
+
+    //runs distance conversions
+    switch (distIdx) {
+        case 0:
+            //meters
+            deepTxt = deepm;
+            break;
+        case 1:
+            //feet
+            deepTxt = parseInt(deepm * 3.28);
+            break;
+
+        case 2:
+            //miles
+            deepTxt = (deepm / 1609.344).toFixed(2);
+            break;
+
+        case 3:
+            //kilometers
+            deepTxt = (deepm / 1000).toFixed(2);
+            break;
+
     }
 
     //displays text in the DOM
-    if (deepm < 0) {
+    if (deepm < 0 || deepm > 11000) {
         $("#depthTxt").css("display", "none");
-    } else if (deepm > 11000) {
-        $("#depthTxt").css("display", "none");
+        $("#presTxt").css("display", "none");
     }
     else {
         $("#depthTxt").css("display", "block");
-        $("#depthTxt").text(deepTxt + sf);
+        $("#depthTxt").text(deepTxt + sfd);
+
+        $("#presTxt").css("display", "block");
+        $("#presTxt").text(presTxt + sfp);
     }
 
 }
@@ -76,28 +98,28 @@ function zoneScroll(windowTop) {
 
 $(document).ready(function () {
     //depth gauge persistence
-    deepText();
+    depthGauge();
 
     //sticky title functions
     $(window).scroll(function () {
-        deepText();
+        depthGauge();
         let windowTop = $(window).scrollTop();
         zoneScroll(windowTop);
 
     })
 
-    //changes units
-    $(".unitTogl").on("click", function () {
-        
-        if (distIdx < distUnits.length-1) {
+    //changes distance units
+    $("#distTogl").on("click", function () {
+
+        if (distIdx < distUnits.length - 1) {
             distIdx++;
-        } else{
+        } else {
             distIdx = 0;
         }
-        
-        sf = distUnits[distIdx];
 
-        $(".unitTogl").text(sf.toUpperCase());
+        sfd = distUnits[distIdx];
+
+        $(".distTogl").text(sfd.toUpperCase());
     })
 
 })
