@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Ocean Zones</title>
 </head>
-<div class="land">
-        <p class="unitTogl">M</p>
-    <h1 id="depthTxt">0m</h4>
+<div class="top">
+    <p class="unitTogl">M</p>
+    <div id="depthDiv"><h1 id="depthTxt">0m</h1></div>
 </div>
-<!-- 0-200m -->
-<div class="zoneDiv">
+<section class="zoneDiv">
+    <!-- 0-200m -->
     <div class="ocean sunlit">
         <h1 class="zoneTitle" id="epiZone">Epipelagic Zone</h1>
         <h4>100m</h4>
@@ -21,9 +21,9 @@
     <div class="ocean sunlitLast">
         <h4>200m</h4>
     </div>
-</div>
-<!-- 200-1000m -->
-<div class="zoneDiv">
+</section>
+<section class="zoneDiv">
+    <!-- 200-1000m -->
     <div class="ocean twilit">
         <h1 class="zoneTitle" id="mesoZone">Mesopelagic Zone</h1>
         <h4>300m</h4>
@@ -49,9 +49,9 @@
     <div class="ocean twilitLast">
         <h4>1000m</h4>
     </div>
-</div>
-<!-- 1000-2000m -->
-<div class="zoneDiv">
+</section>
+<section class="zoneDiv">
+    <!-- 1000-2000m -->
     <div class="ocean midnight">
         <h1 class="zoneTitle" id="bathyZone">Bathypelagic Zone</h1>
         <h4>1100m</h4>
@@ -145,9 +145,9 @@
     <div class="ocean midnight">
         <h4>4000m</h4>
     </div>
-</div>
-<!-- 4000-5000m -->
-<div class="zoneDiv">
+</section>
+<section class="zoneDiv">
+    <!-- 4000-5000m -->
     <div class="ocean midnight">
         <h1 class="zoneTitle" id="abyssZone">Abyssopelagic Zone</h1>
         <h4>4100m</h4>
@@ -210,9 +210,9 @@
     <div class="ocean midnight">
         <h4>6000m</h4>
     </div>
-</div>
-<!-- 6000-7000m -->
-<div class="zoneDiv">
+</section>
+<section class="zoneDiv">
+    <!-- 6000-7000m -->
     <div class="ocean midnight">
         <h1 class="zoneTitle" id="hadoZone">Hadopelagic Zone</h1>
         <h4>6100m</h4>
@@ -368,12 +368,10 @@
     <div class="ocean midnightLast">
         <h4>11000m</h4>
     </div>
-</div>
-
+</section>
 <div class="oceanfloor"></div>
 <!-- link to javascript and jquery-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="assets/javascript/script.js"></script>
 </body>
-
 </html>

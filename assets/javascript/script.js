@@ -1,18 +1,21 @@
-let feet = false;
+const distUnits = ["m", "ft"]
+let distIdx = 0;
+let sf = distUnits[distIdx];
 
 function deepText() {
 
     //calculates correct height
-    let deepm = parseInt(($(window).scrollTop() + ($(window).height() / 2) - 500) / 10);
-    let sf = "m";
+    const winAdj = $(window).scrollTop() + ($(window).height() / 2);
+    const topHt = parseInt($(".top").css("height"));
+    let deepm = parseInt((winAdj - topHt) / 10);
 
-    //runs conversion to feet if toggled
-    if (feet === true) {
+
+    //runs conversions
+    if (distIdx = 1) {
+        //feet
         deepTxt = parseInt(deepm * 3.28);
-        sf = "ft";
     } else {
         deepTxt = deepm;
-        sf = "m";
     }
 
     //displays text in the DOM
@@ -74,6 +77,7 @@ function zoneScroll(windowTop) {
 $(document).ready(function () {
     //depth gauge persistence
     deepText();
+
     //sticky title functions
     $(window).scroll(function () {
         deepText();
@@ -84,9 +88,16 @@ $(document).ready(function () {
 
     //changes units
     $(".unitTogl").on("click", function () {
-        feet = !feet;
-        if (feet) { $(".unitTogl").text("FT"); }
-         else { $(".unitTogl").text("M"); }
+        
+        if (distIdx < distUnits.length-1) {
+            distIdx++;
+        } else{
+            distIdx = 0;
+        }
+        
+        sf = distUnits[distIdx];
+
+        $(".unitTogl").text(sf.toUpperCase());
     })
 
 })

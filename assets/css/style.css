@@ -1,3 +1,7 @@
+html {
+    background-color: #000e38;
+}
+
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -11,21 +15,25 @@ body {
     width: 100%;
 }
 
-#depthTxt {
+#depthDiv{
     position: fixed;
     bottom: 50%;
     right: 0;
     margin: 0;
-    color: white;
-    margin-right: .5em;
+    padding: 0;
     border-bottom: white solid 2px;
 }
 
-.zoneDiv {
-    border-top: 4px solid white;
+#depthTxt {
+    color: white;
+    margin: 0 .5em 0 0;
 }
 
-.land {
+.zoneDiv {
+    /* border-top: 4px solid white; */
+}
+
+.top {
     width: 100%;
     height: 500px;
     margin: 0;
@@ -87,7 +95,7 @@ body {
 }
 
 .unitTogl {
-    position: fixed;
+    position: absolute;
     cursor: pointer;
     top: 10px;
     right: 10px;
