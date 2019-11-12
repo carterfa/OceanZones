@@ -16,7 +16,7 @@ body {
     z-index: 4;
 }
 
-#HUD{
+#HUD {
     position: fixed;
     bottom: 50%;
     right: 0;
@@ -37,13 +37,54 @@ body {
 }
 
 .top {
+    position: relative;
     width: 100%;
     height: 500px;
     margin: 0;
     display: flex;
-    background-image: url("../images/land.jpg");
-    background-size: cover;
-    background-color: rgb(170, 220, 240);
+    background: rgb(75, 121, 255);
+    background: -moz-linear-gradient(45deg, rgba(75, 121, 255, 1) 0%, rgba(113, 211, 255, 1) 70%, rgba(255, 255, 218, 1) 100%);
+    background: -webkit-linear-gradient(45deg, rgba(75, 121, 255, 1) 0%, rgba(113, 211, 255, 1) 70%, rgba(255, 255, 218, 1) 100%);
+    background: linear-gradient(45deg, rgba(75, 121, 255, 1) 0%, rgba(113, 211, 255, 1) 70%, rgba(255, 255, 218, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4b79ff", endColorstr="#ffffda", GradientType=1);
+}
+
+.land {
+    position: absolute;
+    bottom: 0;
+    background: rgb(116, 221, 94);
+    background: -moz-linear-gradient(45deg, rgba(18, 38, 25, 1) 0%, rgba(30, 85, 42, 1) 50%, rgba(116, 221, 94, 1) 100%);
+    background: -webkit-linear-gradient(45deg, rgba(18, 38, 25, 1) 0%, rgba(30, 85, 42, 1) 50%, rgba(116, 221, 94, 1) 100%);
+    background: linear-gradient(45deg, rgba(18, 38, 25, 1) 0%, rgba(30, 85, 42, 1) 50%, rgba(116, 221, 94, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#122619", endColorstr="#74dd5e", GradientType=1);
+    height: 40%;
+    border-top-right-radius: 50%;
+    border-top-left-radius: 50%;
+    width: 100%;
+    display: block;
+}
+
+.sand {
+    position: absolute;
+    bottom: 0;
+    background-color: #e5d2b1;
+    background-image: linear-gradient(#e5d2b1, #a98345);
+    height: 10%;
+    width: 100%;
+    display: block;
+}
+
+.foam {
+    position: absolute;
+    bottom: 0;
+    height: 5%;
+    background: rgb(83, 200, 238);
+    background: -moz-linear-gradient(0deg, rgba(83, 200, 238, 1) 10%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 0) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(83, 200, 238, 1) 10%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(0deg, rgba(83, 200, 238, 1) 10%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#53c8ee", endColorstr="#ffffff", GradientType=1);
+    display: block;
+    width: 100%;
 }
 
 .ocean h4, .land h4 {
@@ -66,13 +107,13 @@ body {
 }
 
 .sunlit {
-    background-color: #86d2e7;
+    background-color: #53c8ee;
     position: static;
 }
 
 .sunlitLast {
-    background-color: #86d2e7;
-    background-image: linear-gradient(#86d2e7, #263069);
+    background-color: #53c8ee;
+    background-image: linear-gradient(#53c8ee, #263069);
     position: static;
 }
 
@@ -91,21 +132,21 @@ body {
 
 .midnightLast {
     background-color: #000e38;
-    height: 950px;
 }
 
 .oceanfloor {
     background-color: black;
-    height: 500px;
+    height: 100px;
 }
 
 .cliff {
     position: absolute;
     top: 40500px;
     border-bottom: 70000px solid black;
-	border-left: 100px solid #000e38;
+    border-left: 100px solid #000e38;
     height: 0;
-    width: 40vw;
+    width: 40%;
+    max-width: 40vw;
     right: 0;
     z-index: 1;
     background-color: black;
@@ -115,62 +156,63 @@ body {
     position: absolute;
     top: 60500px;
     border-bottom: 50000px solid black;
-	border-right: 25px solid #000e38;
+    border-right: 25px solid #000e38;
     height: 0;
-    width: 40vw;
+    width: 40%;
+    max-width: 40vw;
     left: 0;
     z-index: 1;
     background-color: black;
 }
 
-.living{
-position: absolute;
-
+.living {
+    position: absolute;
+    z-index: 2;
 }
 
-#scubadiver{
+#scubadiver {
     max-width: 8%;
     top: 700px;
     left: 75%;
 }
 
-#whaleshark{
+#whaleshark {
     max-width: 40%;
     top: 1000px;
     left: 30%;
 }
 
-#elephantseal{
+#elephantseal {
     max-width: 10%;
     top: 15500px;
     left: 30%;
 }
 
-#spermwhale{
+#spermwhale {
     max-width: 50%;
     top: 9500px;
     left: 35%;
 }
 
-#giantsquid{
+#giantsquid {
     max-width: 40%;
     top: 6500px;
     left: 15%;
 }
 
-#turtle{
+#turtle {
     max-width: 10%;
     top: 8500px;
     left: 15%;
 }
 
-#beakedwhale{
+#beakedwhale {
     max-width: 15%;
     top: 30420px;
     left: 50%;
 }
 
-#bigfinsquid{
+#bigfinsquid {
     max-width: 10%;
     top: 47500px;
     left: 20%;
@@ -212,8 +254,12 @@ position: absolute;
     transition: .3s;
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 650px) {
     h1, .ocean h4, .land h4, .zoneTitle {
         font-size: 1em;
+    }
+
+    .cliff, .trench {
+        max-width: 35vw;
     }
 }

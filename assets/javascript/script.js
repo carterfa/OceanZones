@@ -120,12 +120,20 @@ $(document).ready(function () {
     //depth gauge persistence
     depthGauge();
 
+    //sets ocean floor to height of gauge
+    $(".oceanfloor").css("height", ($(window).height() / 2));
+    
+
     //sticky title functions
     $(window).scroll(function () {
         depthGauge();
         let windowTop = $(window).scrollTop();
         zoneScroll(windowTop);
 
+    })
+
+    $(window).resize(function (){
+        $(".oceanfloor").css("height", ($(window).height() / 2));
     })
 
     //changes distance units
@@ -140,6 +148,7 @@ $(document).ready(function () {
         sfd = distUnits[distIdx];
 
         $("#distTogl").text(sfd);
+        depthGauge();
     })
 
     //changes pressure units
@@ -154,6 +163,7 @@ $(document).ready(function () {
         sfp = presUnits[presIdx];
 
         $("#presTogl").text(sfp);
+        depthGauge();
     })
 
 })
