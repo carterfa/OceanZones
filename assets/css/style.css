@@ -13,15 +13,17 @@ body {
     color: white;
     position: static;
     width: 100%;
+    z-index: 4;
 }
 
-#depthDiv{
+#HUD{
     position: fixed;
     bottom: 50%;
     right: 0;
     margin: 0;
     padding: 0;
     border-bottom: white solid 2px;
+    z-index: 2;
 }
 
 #depthTxt, #presTxt {
@@ -30,6 +32,7 @@ body {
 }
 
 .zoneDiv {
+    display: block;
     /* border-top: 4px solid white; */
 }
 
@@ -64,11 +67,13 @@ body {
 
 .sunlit {
     background-color: #86d2e7;
+    position: static;
 }
 
 .sunlitLast {
     background-color: #86d2e7;
     background-image: linear-gradient(#86d2e7, #263069);
+    position: static;
 }
 
 .twilit {
@@ -94,8 +99,85 @@ body {
     height: 500px;
 }
 
-#distTogl {
+.cliff {
     position: absolute;
+    top: 40500px;
+    border-bottom: 70000px solid black;
+	border-left: 100px solid #000e38;
+    height: 0;
+    width: 40vw;
+    right: 0;
+    z-index: 1;
+    background-color: black;
+}
+
+.trench {
+    position: absolute;
+    top: 60500px;
+    border-bottom: 50000px solid black;
+	border-right: 25px solid #000e38;
+    height: 0;
+    width: 40vw;
+    left: 0;
+    z-index: 1;
+    background-color: black;
+}
+
+.living{
+position: absolute;
+
+}
+
+#scubadiver{
+    max-width: 8%;
+    top: 700px;
+    left: 75%;
+}
+
+#whaleshark{
+    max-width: 40%;
+    top: 1000px;
+    left: 30%;
+}
+
+#elephantseal{
+    max-width: 10%;
+    top: 15500px;
+    left: 30%;
+}
+
+#spermwhale{
+    max-width: 50%;
+    top: 9500px;
+    left: 35%;
+}
+
+#giantsquid{
+    max-width: 40%;
+    top: 6500px;
+    left: 15%;
+}
+
+#turtle{
+    max-width: 10%;
+    top: 8500px;
+    left: 15%;
+}
+
+#beakedwhale{
+    max-width: 15%;
+    top: 30420px;
+    left: 50%;
+}
+
+#bigfinsquid{
+    max-width: 10%;
+    top: 47500px;
+    left: 20%;
+}
+
+#distTogl {
+    position: fixed;
     cursor: pointer;
     top: 10px;
     right: 10px;
@@ -113,12 +195,12 @@ body {
 }
 
 #presTogl {
-    position: absolute;
+    position: fixed;
     cursor: pointer;
     top: 10px;
     right: 60px;
     display: block;
-    width: 40px;
+    width: 50px;
     margin: 0;
     font-size: 1em;
     line-height: 2em;

@@ -1,5 +1,5 @@
 const distUnits = ["m", "ft", "mi", "km"];
-const presUnits = ["atm"];
+const presUnits = ["atm", "psi", "bar"];
 let distIdx = 0;
 let presIdx = 0;
 let sfd = distUnits[distIdx];
@@ -12,7 +12,27 @@ function depthGauge() {
     const topHt = parseInt($(".top").css("height"));
     let deepm = parseInt((winAdj - topHt) / 10);
 
-    let presTxt = parseInt(1 + (deepm / 10));
+    let presTxt = "";
+    let deepTxt = "";
+
+    //runs pressure conversions
+    switch (presIdx) {
+        case 0:
+            //atmospheres
+            presTxt = parseInt(1 + (deepm / 10));
+            break;
+        case 1:
+            //psi
+            presTxt = parseInt(14.6 + (14.6* (deepm / 10)));
+            break;
+
+        case 2:
+            //bar
+            presTxt = parseInt(1 + (deepm / 10));
+            break;
+
+
+    }
 
 
     //runs distance conversions
@@ -119,7 +139,21 @@ $(document).ready(function () {
 
         sfd = distUnits[distIdx];
 
-        $(".distTogl").text(sfd.toUpperCase());
+        $("#distTogl").text(sfd);
+    })
+
+    //changes pressure units
+    $("#presTogl").on("click", function () {
+
+        if (presIdx < presUnits.length - 1) {
+            presIdx++;
+        } else {
+            presIdx = 0;
+        }
+
+        sfp = presUnits[presIdx];
+
+        $("#presTogl").text(sfp);
     })
 
 })
