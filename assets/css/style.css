@@ -14,6 +14,7 @@ body {
     position: static;
     width: 100%;
     z-index: 4;
+    text-shadow: black 1px 1px;
 }
 
 #HUD {
@@ -56,6 +57,7 @@ body {
 #depthTxt, #presTxt {
     color: white;
     margin: 0 .5em 0 0;
+    text-shadow: black 1px 1px;
 }
 
 #distTogl {
@@ -120,7 +122,7 @@ body {
     background: -webkit-linear-gradient(45deg, rgba(18, 38, 25, 1) 0%, rgba(30, 85, 42, 1) 50%, rgba(116, 221, 94, 1) 100%);
     background: linear-gradient(45deg, rgba(18, 38, 25, 1) 0%, rgba(30, 85, 42, 1) 50%, rgba(116, 221, 94, 1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#122619", endColorstr="#74dd5e", GradientType=1);
-    height: 40%;
+    height: 60%;
     border-top-right-radius: 50%;
     border-top-left-radius: 50%;
     width: 100%;
@@ -132,7 +134,7 @@ body {
     bottom: 0;
     background-color: #e5d2b1;
     background-image: linear-gradient(#e5d2b1, #a98345);
-    height: 10%;
+    height: 20%;
     width: 100%;
     display: block;
 }
@@ -140,11 +142,11 @@ body {
 .foam {
     position: absolute;
     bottom: 0;
-    height: 5%;
+    height: 10%;
     background: rgb(83, 200, 238);
-    background: -moz-linear-gradient(0deg, rgba(83, 200, 238, 1) 10%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 0) 100%);
-    background: -webkit-linear-gradient(0deg, rgba(83, 200, 238, 1) 10%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 0) 100%);
-    background: linear-gradient(0deg, rgba(83, 200, 238, 1) 10%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 0) 100%);
+    background: -moz-linear-gradient(0deg, rgba(83, 200, 238, 1) 5%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(83, 200, 238, 1) 5%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(0deg, rgba(83, 200, 238, 1) 5%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#53c8ee", endColorstr="#ffffff", GradientType=1);
     display: block;
     width: 100%;
@@ -204,27 +206,24 @@ body {
 .cliff {
     position: absolute;
     top: 40500px;
-    border-bottom: 70000px solid black;
-    border-left: 100px solid #000e38;
-    height: 0;
-    width: 40%;
-    max-width: 40vw;
     right: 0;
+    border-bottom: 70000px solid black;
+    border-left: 10vw solid transparent;
+    height: 0;
+    width: 30vw;
     z-index: 1;
-    background-color: black;
+    
 }
 
 .trench {
     position: absolute;
     top: 60500px;
-    border-bottom: 50000px solid black;
-    border-right: 25px solid #000e38;
-    height: 0;
-    width: 40%;
-    max-width: 40vw;
     left: 0;
+    border-bottom: 50000px solid black;
+    border-right: 5vw solid transparent;
+    height: 0;
+    width: 30vw;
     z-index: 1;
-    background-color: black;
 }
 
 .living {
@@ -283,8 +282,5 @@ body {
 @media screen and (max-width: 650px) {
     h1, .ocean h4, .land h4, .zoneTitle {
         font-size: 1em;
-    }
-    .cliff, .trench {
-        max-width: 20vw;
     }
 }

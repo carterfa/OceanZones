@@ -16,6 +16,10 @@ function depthGauge() {
     let sfd = distUnits[distIdx];
     let sfp = presUnits[presIdx];
 
+    //sets toggle display
+    $("#presTogl").text(sfp);
+    $("#distTogl").text(sfd);
+
     //runs pressure conversions
     switch (presIdx) {
         case 0:
