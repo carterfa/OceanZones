@@ -2,8 +2,7 @@ const distUnits = ["m", "ft", "mi", "km"];
 const presUnits = ["atm", "psi", "bar"];
 let distIdx = 0;
 let presIdx = 0;
-let sfd = distUnits[distIdx];
-let sfp = presUnits[presIdx];
+
 
 function depthGauge() {
 
@@ -14,6 +13,8 @@ function depthGauge() {
 
     let presTxt = "";
     let deepTxt = "";
+    let sfd = distUnits[distIdx];
+    let sfp = presUnits[presIdx];
 
     //runs pressure conversions
     switch (presIdx) {
@@ -74,11 +75,27 @@ function depthGauge() {
 }
 
 function mapScroll(windowTop) {
-    if (windowTop > 500) {
-        $("#mapslider").css({ top: (windowTop - 500) });
 
-    } else {
-        $("#mapslider").css({ top: 0 });
+    let windowHt = $(window).height();
+    let mapHt = parseInt($("#minimap").css("height"));
+    let oceanDpth = parseInt($("#wholeocean").css("height"));
+    let winscale = (windowHt * parseInt(mapHt)) / parseInt(oceanDpth) * 10;
+    let slider = $("#mapslider");
+    let sliderHt = parseInt($("#mapslider").css("height"));
+
+    //sets mapslider size based on window
+    $("#mapslider").css("height", winscale);
+
+
+    //scrolls based on window
+    let scrollscale = (windowTop / oceanDpth) * mapHt;
+    if (windowTop > 500 && scrollscale < (mapHt - sliderHt)) {
+        slider.css({ top: scrollscale });
+    } else if (scrollscale > (mapHt - sliderHt)) {
+        slider.css({ top: (mapHt - sliderHt) });
+    }
+    else {
+        slider.css({ top: 0 });
     }
 }
 
@@ -125,9 +142,29 @@ function zoneScroll(windowTop) {
 
 }
 
+function mapGo(relY) {
+    let mapHt = parseInt($("#minimap").css("height"));
+    let oceanDpth = parseInt($("#wholeocean").css("height"));
+    let windowTop = $(window).scrollTop();
+    const topHt = parseInt($(".top").css("height"));
+
+    let location = parseInt(((relY * oceanDpth) / mapHt) + topHt);
+
+    console.log(location);
+
+    $('html, body').animate({ 
+        scrollTop: location}, 
+        1400, 
+     );
+
+}
+
 $(document).ready(function () {
     //depth gauge persistence
     depthGauge();
+    //sets ocean floor
+    $(".oceanfloor").css("height", (($(window).height() / 2)));
+
 
     //sticky title functions
     $(window).scroll(function () {
@@ -136,10 +173,14 @@ $(document).ready(function () {
         zoneScroll(windowTop);
         mapScroll(windowTop);
 
-    })
+    });
 
-    //adjusts ocean floor to gauge height
-    $(".oceanfloor").css("height",(($(window).height()/2)));
+
+    $(window).resize(function () {
+        //adjusts ocean floor to gauge height
+        $(".oceanfloor").css("height", (($(window).height() / 2)));
+        mapScroll($(window).scrollTop());
+    });
 
     //changes distance units
     $("#distTogl").on("click", function () {
@@ -150,9 +191,6 @@ $(document).ready(function () {
             distIdx = 0;
         }
 
-        sfd = distUnits[distIdx];
-
-        $("#distTogl").text(sfd);
         depthGauge();
     })
 
@@ -165,10 +203,14 @@ $(document).ready(function () {
             presIdx = 0;
         }
 
-        sfp = presUnits[presIdx];
-
-        $("#presTogl").text(sfp);
         depthGauge();
     })
+
+    $("#minimap").click(function (event) {
+        let offset = $(this).offset();
+        let relY = event.pageY - offset.top;
+        console.log(relY);
+        mapGo(relY);
+    });
 
 })
