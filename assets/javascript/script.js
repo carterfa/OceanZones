@@ -23,7 +23,7 @@ function depthGauge() {
             break;
         case 1:
             //psi
-            presTxt = parseInt(14.6 + (14.6* (deepm / 10)));
+            presTxt = parseInt(14.6 + (14.6 * (deepm / 10)));
             break;
 
         case 2:
@@ -73,6 +73,15 @@ function depthGauge() {
 
 }
 
+function mapScroll(windowTop) {
+    if (windowTop > 500) {
+        $("#mapslider").css({ top: (windowTop - 500) });
+
+    } else {
+        $("#mapslider").css({ top: 0 });
+    }
+}
+
 function zoneScroll(windowTop) {
 
     let zone;
@@ -120,21 +129,17 @@ $(document).ready(function () {
     //depth gauge persistence
     depthGauge();
 
-    //sets ocean floor to height of gauge
-    $(".oceanfloor").css("height", ($(window).height() / 2));
-    
-
     //sticky title functions
     $(window).scroll(function () {
         depthGauge();
         let windowTop = $(window).scrollTop();
         zoneScroll(windowTop);
+        mapScroll(windowTop);
 
     })
 
-    $(window).resize(function (){
-        $(".oceanfloor").css("height", ($(window).height() / 2));
-    })
+    //adjusts ocean floor to gauge height
+    $(".oceanfloor").css("height",(($(window).height()/2)));
 
     //changes distance units
     $("#distTogl").on("click", function () {

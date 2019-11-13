@@ -23,12 +23,64 @@ body {
     margin: 0;
     padding: 0;
     border-bottom: white solid 2px;
-    z-index: 2;
+    z-index: 4;
+}
+
+#minimap {
+    position: fixed;
+    top: 25%;
+    left: 10px;
+    background-color: red;
+    width: 10%;
+    height: 50%;
+}
+
+#mapslider{
+    border: solid black 1px;
+    position: relative;
+    top: 0;
+    height: 100px;
 }
 
 #depthTxt, #presTxt {
     color: white;
     margin: 0 .5em 0 0;
+}
+
+#distTogl {
+    position: fixed;
+    cursor: pointer;
+    top: 10px;
+    right: 10px;
+    display: block;
+    width: 40px;
+    margin: 0;
+    font-size: 1em;
+    line-height: 2em;
+    color: white;
+    text-align: center;
+    background-color: rgb(60, 60, 60);
+    background-color: rgba(60, 60, 60, 0.685);
+    -webkit-transition: .3s;
+    transition: .3s;
+}
+
+#presTogl {
+    position: fixed;
+    cursor: pointer;
+    top: 10px;
+    right: 60px;
+    display: block;
+    width: 50px;
+    margin: 0;
+    font-size: 1em;
+    line-height: 2em;
+    color: white;
+    text-align: center;
+    background-color: rgb(60, 60, 60);
+    background-color: rgba(60, 60, 60, 0.685);
+    -webkit-transition: .3s;
+    transition: .3s;
 }
 
 .zoneDiv {
@@ -136,7 +188,6 @@ body {
 
 .oceanfloor {
     background-color: black;
-    height: 100px;
 }
 
 .cliff {
@@ -216,42 +267,6 @@ body {
     max-width: 10%;
     top: 47500px;
     left: 20%;
-}
-
-#distTogl {
-    position: fixed;
-    cursor: pointer;
-    top: 10px;
-    right: 10px;
-    display: block;
-    width: 40px;
-    margin: 0;
-    font-size: 1em;
-    line-height: 2em;
-    color: white;
-    text-align: center;
-    background-color: rgb(60, 60, 60);
-    background-color: rgba(60, 60, 60, 0.685);
-    -webkit-transition: .3s;
-    transition: .3s;
-}
-
-#presTogl {
-    position: fixed;
-    cursor: pointer;
-    top: 10px;
-    right: 60px;
-    display: block;
-    width: 50px;
-    margin: 0;
-    font-size: 1em;
-    line-height: 2em;
-    color: white;
-    text-align: center;
-    background-color: rgb(60, 60, 60);
-    background-color: rgba(60, 60, 60, 0.685);
-    -webkit-transition: .3s;
-    transition: .3s;
 }
 
 @media screen and (max-width: 650px) {
