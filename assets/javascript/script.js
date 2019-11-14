@@ -83,7 +83,7 @@ function mapScroll(windowTop) {
     let windowHt = $(window).height();
     let mapHt = parseInt($("#minimap").css("height"));
     let oceanDpth = parseInt($("#wholeocean").css("height"));
-    let winscale = (windowHt * parseInt(mapHt)) / parseInt(oceanDpth) * 10;
+    let winscale = (windowHt * parseInt(mapHt)) / parseInt(oceanDpth) * 5;
     let slider = $("#mapslider");
     let sliderHt = parseInt($("#mapslider").css("height"));
 
@@ -149,7 +149,6 @@ function zoneScroll(windowTop) {
 function mapGo(relY) {
     let mapHt = parseInt($("#minimap").css("height"));
     let oceanDpth = parseInt($("#wholeocean").css("height"));
-    let windowTop = $(window).scrollTop();
     const topHt = parseInt($(".top").css("height"));
 
     let location = parseInt(((relY * oceanDpth) / mapHt) + topHt);
@@ -158,7 +157,7 @@ function mapGo(relY) {
 
     $('html, body').animate({ 
         scrollTop: location}, 
-        1400, 
+        1500, 
      );
 
 }
@@ -182,7 +181,7 @@ $(document).ready(function () {
 
     $(window).resize(function () {
         //adjusts ocean floor to gauge height
-        $(".oceanfloor").css("height", (($(window).height() / 2)));
+        $(".oceanfloor").css("height", (($(window).height() / 1.5)));
         mapScroll($(window).scrollTop());
     });
 
