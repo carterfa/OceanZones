@@ -15,15 +15,25 @@
 </div>
 
 <div id="HUD">
-    <div id="minimap"><div id="mapslider"></div></div>
+    <div class="minimap">
+        <div class="goSurface">&#8679;</div>
+        <div class="mapZone" id="mapEpi"><span class="tooltiptext" id="mapEpiText">Epipelagic</span></div>
+        <div class="mapZone" id="mapMeso"><span class="tooltiptext" id="mapMesoText">Mesopelagic</span></div>
+        <div class="mapZone" id="mapBathy"><span class="tooltiptext" id="mapBathyText">Bathypelagic</span></div>
+        <div class="mapZone" id="mapAbyss"><span class="tooltiptext" id="mapAbyssText">Abyssopelagic</span></div>
+        <div class="mapZone" id="mapHado"><span class="tooltiptext" id="mapHadoText">Hadopelagic</span></div>
+        <div class="goDeep">&#8681;</div>
+        <div id="mapslider"></div>
+    </div>
     <div id="optionsMenu">
         <p class="unitTogl" id="distTogl">m</p>
         <p class="unitTogl" id="presTogl">atm</p>
+        <p class="unitTogl" id="mapTogl">map</p>
     </div>
-    <h1 id="presTxt">1 atm</h1>
+    <h1 id="presTxt">1atm</h1>
     <h1 id="depthTxt">0m</h1>
 </div>
-<div id="wholeocean"> 
+<div id="wholeocean">
     <img class="living" id="scubadiver" src="assets/images/ScubaDiver.png" alt="scuba diver" />
     <img class="living" id="whaleshark" src="assets/images/WhaleShark.png" alt="whale shark" />
     <img class="living" id="elephantseal" src="assets/images/ElephantSeal.png" alt="elephant seal" />

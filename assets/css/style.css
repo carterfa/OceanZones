@@ -27,73 +27,143 @@ body {
     z-index: 5;
 }
 
-#minimap {
+.minimap {
     position: fixed;
-    top: 25%;
+    top: 20%;
     left: 10px;
-    background: rgb(0, 14, 56);
-    background: -moz-linear-gradient(0deg, rgba(0, 14, 56, 1) 0%, rgba(38, 48, 105, 1) 90%, rgba(83, 200, 238, 1) 100%);
-    background: -webkit-linear-gradient(0deg, rgba(0, 14, 56, 1) 0%, rgba(38, 48, 105, 1) 90%, rgba(83, 200, 238, 1) 100%);
-    background: linear-gradient(0deg, rgba(0, 14, 56, 1) 0%, rgba(38, 48, 105, 1) 90%, rgba(83, 200, 238, 1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000e38", endColorstr="#53c8ee", GradientType=1);
-    opacity: .5;
     width: 10%;
-    height: 50%;
+    height: 70%;
     border: 2px solid white;
+    opacity: .5;
 }
 
-#minimap:hover {
+.minimap:hover, .mapZone:hover {
     opacity: 1;
-    cursor: pointer;
+    cursor: crosshair;
 }
 
 #mapslider {
     background-color: white;
-    background-color: rgba(255, 255, 255, .5);
-    position: relative;
+    position: absolute;
+    width: 100%;
     top: 0;
+    height: 2px;
+}
+
+.goSurface, .goDeep {
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    font-size: 2em;
+    text-align: center;
+    color: white;
+}
+
+.goSurface {
+    top: -40px;
+}
+
+.tooltip, .tooltiptext {
+    visibility: hidden;
+    color: white;
+    position: relative;
+    top: -4px;
+    left: 4px;
+    text-shadow: black 2px 2px 1px;
+    font-size: .75em;
+    z-index: 6;
+}
+
+#mapEpi:hover #mapEpiText {
+    visibility: visible;
+    opacity: 1;
+}
+
+#mapMeso:hover #mapMesoText {
+    visibility: visible;
+    opacity: 1;
+}
+
+#mapBathy:hover #mapBathyText {
+    visibility: visible;
+    opacity: 1;
+}
+
+#mapAbyss:hover #mapAbyssText {
+    visibility: visible;
+    opacity: 1;
+}
+
+#mapHado:hover #mapHadoText {
+    visibility: visible;
+    opacity: 1;
+}
+
+.mapZone {
+    opacity: .5;
+}
+
+#mapEpi {
+    height: 3%;
+    background-color: rgb(180, 15, 15);
+}
+
+#mapMeso {
+    height: 7%;
+    background-color: rgb(170, 160, 0);
+}
+
+#mapBathy {
+    height: 27%;
+    background-color: rgb(50, 120, 40);
+}
+
+#mapAbyss {
+    height: 18%;
+    background-color: rgb(110, 180, 200);
+}
+
+#mapHado {
+    height: 45%;
+    background-color: rgb(255, 100, 200);
 }
 
 #depthTxt, #presTxt {
     color: white;
     margin: 0 .5em 0 0;
-    text-shadow: black 1px 1px;
+    text-shadow: black 1px 0px;
+}
+
+.unitTogl {
+    position: fixed;
+    cursor: pointer;
+    top: 10px;
+    display: block;
+    margin: 0;
+    font-size: 1em;
+    line-height: 2em;
+    color: white;
+    text-align: center;
+    background-color: rgb(60, 60, 60);
+    background-color: rgba(60, 60, 60, 0.685);
+    -webkit-transition: .3s;
+    transition: .3s;
 }
 
 #distTogl {
-    position: fixed;
-    cursor: pointer;
-    top: 10px;
     right: 10px;
-    display: block;
     width: 40px;
-    margin: 0;
-    font-size: 1em;
-    line-height: 2em;
-    color: white;
-    text-align: center;
-    background-color: rgb(60, 60, 60);
-    background-color: rgba(60, 60, 60, 0.685);
-    -webkit-transition: .3s;
-    transition: .3s;
 }
 
 #presTogl {
-    position: fixed;
-    cursor: pointer;
-    top: 10px;
     right: 60px;
-    display: block;
     width: 50px;
-    margin: 0;
-    font-size: 1em;
-    line-height: 2em;
-    color: white;
-    text-align: center;
-    background-color: rgb(60, 60, 60);
-    background-color: rgba(60, 60, 60, 0.685);
-    -webkit-transition: .3s;
-    transition: .3s;
+}
+
+#mapTogl {
+    right: 120px;
+    width: 50px;
+    text-decoration: none;
 }
 
 .zoneDiv {
@@ -163,6 +233,10 @@ body {
     display: none;
 }
 
+#wholeocean {
+    position: relative;
+}
+
 .ocean {
     width: 100%;
     height: 1000px;
@@ -205,19 +279,18 @@ body {
 
 .cliff {
     position: absolute;
-    top: 40500px;
+    bottom: 0;
     right: 0;
     border-bottom: 70000px solid black;
     border-left: 10vw solid transparent;
     height: 0;
     width: 30vw;
     z-index: 1;
-    
 }
 
 .trench {
     position: absolute;
-    top: 60500px;
+    bottom: 0;
     left: 0;
     border-bottom: 50000px solid black;
     border-right: 5vw solid transparent;
@@ -233,54 +306,60 @@ body {
 
 #scubadiver {
     max-width: 8%;
-    top: 700px;
+    top: 200px;
     left: 75%;
 }
 
 #whaleshark {
     max-width: 40%;
-    top: 1000px;
+    top: 500px;
     left: 30%;
 }
 
 #elephantseal {
     max-width: 10%;
-    top: 15500px;
+    top: 15000px;
     left: 30%;
 }
 
 #spermwhale {
     max-width: 50%;
-    top: 9500px;
+    top: 9000px;
     left: 35%;
 }
 
 #giantsquid {
     max-width: 40%;
-    top: 6500px;
+    top: 6000px;
     left: 15%;
 }
 
 #turtle {
     max-width: 10%;
-    top: 8500px;
+    top: 8000px;
     left: 15%;
 }
 
 #beakedwhale {
     max-width: 15%;
-    top: 30420px;
+    top: 30000px;
     left: 50%;
 }
 
 #bigfinsquid {
     max-width: 10%;
-    top: 47500px;
+    top: 47000px;
     left: 20%;
 }
 
 @media screen and (max-width: 650px) {
     h1, .ocean h4, .land h4, .zoneTitle {
         font-size: 1em;
+    }
+    .minimap {
+        width: 20%;
+    }
+    .tooltiptext {
+        font-size: .5em;
     }
 }

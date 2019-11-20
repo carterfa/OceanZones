@@ -3,12 +3,12 @@ const presUnits = ["atm", "psi", "bar"];
 let distIdx = 0;
 let presIdx = 0;
 
+let topHt = parseInt($(".top").css("height"));
 
 function depthGauge() {
 
     //calculates correct height
     const winAdj = $(window).scrollTop() + ($(window).height() / 2);
-    const topHt = parseInt($(".top").css("height"));
     let deepm = parseInt((winAdj - topHt) / 10);
 
     let presTxt = "";
@@ -35,8 +35,6 @@ function depthGauge() {
             //bar
             presTxt = parseInt(1 + (deepm / 10));
             break;
-
-
     }
 
 
@@ -81,9 +79,10 @@ function depthGauge() {
 function mapScroll(windowTop) {
 
     let windowHt = $(window).height();
-    let mapHt = parseInt($("#minimap").css("height"));
+    let mapHt = parseInt($(".minimap").css("height"));
     let oceanDpth = parseInt($("#wholeocean").css("height"));
-    let winscale = (windowHt * parseInt(mapHt)) / parseInt(oceanDpth) * 5;
+    //adjusts thickness of slider based on height
+    let winscale = (windowHt * parseInt(mapHt)) / parseInt(oceanDpth);
     let slider = $("#mapslider");
     let sliderHt = parseInt($("#mapslider").css("height"));
 
@@ -95,6 +94,7 @@ function mapScroll(windowTop) {
     let scrollscale = (windowTop / oceanDpth) * mapHt;
     if (windowTop > 500 && scrollscale < (mapHt - sliderHt)) {
         slider.css({ top: scrollscale });
+        //prevents slider from going past bottom of map
     } else if (scrollscale > (mapHt - sliderHt)) {
         slider.css({ top: (mapHt - sliderHt) });
     }
@@ -106,33 +106,34 @@ function mapScroll(windowTop) {
 function zoneScroll(windowTop) {
 
     let zone;
+    topHt = parseInt($(".top").css("height"));
 
     //epipelagic zone scrolling
-    if (windowTop > 500 && windowTop < 2500) {
+    if (windowTop > topHt && windowTop < 2000 + topHt) {
         zone = $("#epiZone");
     } else {
         $("#epiZone").css("position", "static");
     }
     //mesopelagic zone scrolling
-    if (windowTop > 2500 && windowTop < 10500) {
+    if (windowTop > 2000 + topHt && windowTop < 10000 + topHt) {
         zone = $("#mesoZone");
     } else {
         $("#mesoZone").css("position", "static");
     }
     //bathypelagic zone scrolling
-    if (windowTop > 10500 && windowTop < 40500) {
+    if (windowTop > 10000 + topHt && windowTop < 40000 + topHt) {
         zone = $("#bathyZone");
     } else {
         $("#bathyZone").css("position", "static");
     }
     //abyssopelagic zone scrolling
-    if (windowTop > 40500 && windowTop < 60500) {
+    if (windowTop > 40000 + topHt && windowTop < 60000 + topHt) {
         zone = $("#abyssZone");
     } else {
         $("#abyssZone").css("position", "static");
     }
     //hadopelagic zone scrolling
-    if (windowTop > 60500) {
+    if (windowTop > 60000 + topHt) {
         zone = $("#hadoZone");
     } else {
         $("#hadoZone").css("position", "static");
@@ -146,42 +147,48 @@ function zoneScroll(windowTop) {
 
 }
 
+//click map to automatically scroll
 function mapGo(relY) {
-    let mapHt = parseInt($("#minimap").css("height"));
+    let mapHt = parseInt($(".minimap").css("height"));
     let oceanDpth = parseInt($("#wholeocean").css("height"));
-    const topHt = parseInt($(".top").css("height"));
 
+
+    //calculation to translate part clicked to location on page
     let location = parseInt(((relY * oceanDpth) / mapHt) + topHt);
 
-    console.log(location);
+    //console.log(location);
 
-    $('html, body').animate({ 
-        scrollTop: location}, 
-        1500, 
-     );
+    //scrolls to location
+    $('html, body').animate({
+        scrollTop: location
+    },
+        1500,
+    );
 
 }
 
 $(document).ready(function () {
-    //depth gauge persistence
+    let windowTop = $(window).scrollTop();
+    //HUD persistence
     depthGauge();
-    //sets ocean floor
-    $(".oceanfloor").css("height", (($(window).height() / 2)));
-
+    mapScroll(windowTop);
+    //sets top and ocean floor
+    $(".oceanfloor").css("height", (($(window).height() / 1.5)));
+    $(".top").css("height", (($(window).height() / 1.5)));
 
     //sticky title functions
     $(window).scroll(function () {
+        windowTop = $(window).scrollTop();
         depthGauge();
-        let windowTop = $(window).scrollTop();
         zoneScroll(windowTop);
         mapScroll(windowTop);
 
     });
 
-
     $(window).resize(function () {
-        //adjusts ocean floor to gauge height
+        //adjusts top and ocean floor to match gauge height
         $(".oceanfloor").css("height", (($(window).height() / 1.5)));
+        $(".top").css("height", (($(window).height() / 1.5)));
         mapScroll($(window).scrollTop());
     });
 
@@ -195,7 +202,7 @@ $(document).ready(function () {
         }
 
         depthGauge();
-    })
+    });
 
     //changes pressure units
     $("#presTogl").on("click", function () {
@@ -207,12 +214,29 @@ $(document).ready(function () {
         }
 
         depthGauge();
-    })
+    });
 
-    $("#minimap").click(function (event) {
+    //change map visibility
+    $("#mapTogl").on("click", function () {
+
+        // console.log($("#mapTogl").css("text-decoration"));
+
+        $(".minimap").toggle();
+
+        if ($("#mapTogl").css("text-decoration") === "none solid rgb(255, 255, 255)") {
+            $("#mapTogl").css("text-decoration", "line-through");
+        } else {
+            $("#mapTogl").css("text-decoration", "none");
+            console.log("what");
+        }
+    });
+
+    //gets the position of the minimap when clicked
+    $(".minimap").click(function (event) {
         let offset = $(this).offset();
+        //gets y coordinate after compensating for position of element
         let relY = event.pageY - offset.top;
-        console.log(relY);
+        //console.log(relY);
         mapGo(relY);
     });
 
