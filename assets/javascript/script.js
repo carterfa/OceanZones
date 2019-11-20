@@ -5,6 +5,7 @@ let presIdx = 0;
 
 let topHt = parseInt($(".top").css("height"));
 
+//depth gauge changes with scrolling
 function depthGauge() {
 
     //calculates correct height
@@ -62,7 +63,7 @@ function depthGauge() {
     }
 
     //displays text in the DOM
-    if (deepm < 0 || deepm > 11000) {
+    if (deepm < 0 || deepm > 10999) {
         $("#depthTxt").css("display", "none");
         $("#presTxt").css("display", "none");
     }
@@ -89,8 +90,7 @@ function mapScroll(windowTop) {
     //sets mapslider size based on window
     $("#mapslider").css("height", winscale);
 
-
-    //scrolls based on window
+    //scrolls map slider based on window
     let scrollscale = (windowTop / oceanDpth) * mapHt;
     if (windowTop > 500 && scrollscale < (mapHt - sliderHt)) {
         slider.css({ top: scrollscale });
@@ -152,9 +152,19 @@ function mapGo(relY) {
     let mapHt = parseInt($(".minimap").css("height"));
     let oceanDpth = parseInt($("#wholeocean").css("height"));
 
-
     //calculation to translate part clicked to location on page
-    let location = parseInt(((relY * oceanDpth) / mapHt) + topHt);
+    let location = parseInt(((relY * oceanDpth) / mapHt));
+
+    //sets the surface location
+    const surface = topHt - ($(window).height() / 2);
+    const deep = topHt + oceanDpth - ($(window).height() / 2);
+
+    //goes to surface in position above slider
+    if (relY < 0) {
+        location = surface;
+    } else if (relY > mapHt) {
+        location = deep;
+    }
 
     //console.log(location);
 
@@ -185,6 +195,7 @@ $(document).ready(function () {
 
     });
 
+    //responsiveness for window resizing
     $(window).resize(function () {
         //adjusts top and ocean floor to match gauge height
         $(".oceanfloor").css("height", (($(window).height() / 1.5)));
@@ -227,7 +238,6 @@ $(document).ready(function () {
             $("#mapTogl").css("text-decoration", "line-through");
         } else {
             $("#mapTogl").css("text-decoration", "none");
-            console.log("what");
         }
     });
 
@@ -236,8 +246,16 @@ $(document).ready(function () {
         let offset = $(this).offset();
         //gets y coordinate after compensating for position of element
         let relY = event.pageY - offset.top;
-        //console.log(relY);
+
+        console.log(relY);
         mapGo(relY);
+    });
+
+    //changes options visibility
+    $("#menu").on("click", function () {
+
+        $("#optionsMenu").toggle();
+
     });
 
 })

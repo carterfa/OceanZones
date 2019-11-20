@@ -32,9 +32,10 @@ body {
     top: 20%;
     left: 10px;
     width: 10%;
-    height: 70%;
+    height: 65%;
     border: 2px solid white;
     opacity: .5;
+    box-shadow: 1px 1px black;
 }
 
 .minimap:hover, .mapZone:hover {
@@ -57,6 +58,8 @@ body {
     font-size: 2em;
     text-align: center;
     color: white;
+    cursor: pointer;
+    text-shadow: black 1px 1px;
 }
 
 .goSurface {
@@ -150,20 +153,29 @@ body {
     transition: .3s;
 }
 
-#distTogl {
+#menu {
     right: 10px;
     width: 40px;
 }
 
-#presTogl {
+#distTogl {
     right: 60px;
+    width: 40px;
+}
+
+#presTogl {
+    right: 110px;
     width: 50px;
 }
 
 #mapTogl {
-    right: 120px;
+    right: 170px;
     width: 50px;
     text-decoration: none;
+}
+
+#optionsMenu{
+    display: none;
 }
 
 .zoneDiv {
