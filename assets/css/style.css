@@ -54,16 +54,32 @@ body {
 .goSurface, .goDeep {
     position: absolute;
     width: 100%;
-    height: 10px;
     font-size: 2em;
     text-align: center;
     color: white;
     cursor: pointer;
     text-shadow: black 1px 1px;
+    filter: drop-shadow(1px 1px black);
+    left: 50%;
+    margin-left: -15px;
 }
 
 .goSurface {
-    top: -40px;
+    width: 0; 
+    height: 0; 
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid white;
+    top: -20px;
+}
+
+.goDeep{
+    width: 0; 
+    height: 0; 
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid white;
+    bottom: -20px;
 }
 
 .tooltip, .tooltiptext {
