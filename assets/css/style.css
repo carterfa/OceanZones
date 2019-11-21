@@ -49,6 +49,7 @@ body {
     width: 100%;
     top: 0;
     height: 2px;
+    opacity: .6;
 }
 
 .goSurface, .goDeep {
@@ -65,17 +66,17 @@ body {
 }
 
 .goSurface {
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
     border-bottom: 15px solid white;
     top: -20px;
 }
 
-.goDeep{
-    width: 0; 
-    height: 0; 
+.goDeep {
+    width: 0;
+    height: 0;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
     border-top: 15px solid white;
@@ -190,13 +191,27 @@ body {
     text-decoration: none;
 }
 
-#optionsMenu{
+#linesTogl {
+    right: 230px;
+    width: 50px;
+    text-decoration: line-through;
+}
+
+#gaugeTogl {
+    right: 290px;
+    width: 50px;
+    text-decoration: none;
+}
+
+#optionsMenu {
     display: none;
 }
 
 .zoneDiv {
     display: block;
-    /* border-top: 4px solid white; */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .top {
@@ -258,7 +273,11 @@ body {
     width: 100%;
     text-align: right;
     margin-right: .5em;
+    text-shadow: 1px 1px black;
     display: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 #wholeocean {
@@ -270,7 +289,6 @@ body {
     height: 1000px;
     margin: 0;
     display: flex;
-    /* border-bottom: 4px solid white; */
 }
 
 .sunlit {
@@ -344,16 +362,16 @@ body {
     left: 30%;
 }
 
-#elephantseal {
+#turtle {
     max-width: 10%;
-    top: 15000px;
-    left: 30%;
+    top: 3000px;
+    left: 15%;
 }
 
-#spermwhale {
-    max-width: 50%;
-    top: 9000px;
-    left: 35%;
+#swordfish {
+    max-width: 13%;
+    top: 4000px;
+    left: 55%;
 }
 
 #giantsquid {
@@ -362,10 +380,22 @@ body {
     left: 15%;
 }
 
-#turtle {
+#oarfish {
+    max-width: 20%;
+    top: 7500px;
+    left: 50%;
+}
+
+#spermwhale {
+    max-width: 50%;
+    top: 9000px;
+    left: 35%;
+}
+
+#elephantseal {
     max-width: 10%;
-    top: 8000px;
-    left: 15%;
+    top: 15000px;
+    left: 30%;
 }
 
 #beakedwhale {

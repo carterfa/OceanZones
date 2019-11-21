@@ -241,6 +241,31 @@ $(document).ready(function () {
         }
     });
 
+     //lines visibility
+     $("#linesTogl").on("click", function () {
+
+        if ($("#linesTogl").css("text-decoration") === "none solid rgb(255, 255, 255)") {
+            $("#linesTogl").css("text-decoration", "line-through");
+            $(".ocean").css("outline", "none");
+        } else {
+            $("#linesTogl").css("text-decoration", "none");
+            $(".ocean").css("outline", "2px solid white");
+        }
+    });
+
+     //lines visibility
+     $("#gaugeTogl").on("click", function () {
+
+        $("#presTxt").toggle();
+        $("#depthTxt").toggle();
+
+        if ($("#gaugeTogl").css("text-decoration") === "none solid rgb(255, 255, 255)") {
+            $("#gaugeTogl").css("text-decoration", "line-through");
+        } else {
+            $("#gaugeTogl").css("text-decoration", "none");
+        }
+    });
+
     //gets the position of the minimap when clicked
     $(".minimap").click(function (event) {
         let offset = $(this).offset();
