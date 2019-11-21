@@ -63,7 +63,7 @@ function depthGauge() {
     }
 
     //displays text in the DOM
-    if (deepm < 0 || deepm > 10999) {
+    if (deepm < 0 || deepm > 11000) {
         $("#depthTxt").css("display", "none");
         $("#presTxt").css("display", "none");
     }
@@ -252,7 +252,7 @@ $(document).ready(function () {
             $(".ocean").css("outline", "2px solid white");
         }
     });
-    
+
     //gets the position of the minimap when clicked
     $(".minimap").click(function (event) {
         let offset = $(this).offset();

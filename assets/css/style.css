@@ -8,6 +8,11 @@ body {
     color: white;
 }
 
+p{
+    margin: 0;
+    display: none;
+}
+
 .zoneTitle {
     font-size: 2em;
     margin-left: .5em;
@@ -357,11 +362,17 @@ body {
     z-index: 2;
 }
 
+.living img {
+    max-width: 100%;
+}
+
+
 #scubadiver {
     max-width: 8%;
     top: 200px;
     left: 75%;
 }
+
 
 #whaleshark {
     max-width: 40%;
@@ -411,7 +422,23 @@ body {
     left: 40%;
 }
 
-#jellies {
+#jellies img {
+    -webkit-animation-name: glowing;
+    animation-name: glowing;
+    -webkit-animation-duration: 5s;
+    animation-duration: 5s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+#lure {
+    width: 5%;
+    height: 12%;
+    position: absolute;
+    top: 22%;
+    right: 5%;
+    border-radius: 50%;
+    background-color: white;
     -webkit-animation-name: glowing;
     animation-name: glowing;
     -webkit-animation-duration: 5s;
