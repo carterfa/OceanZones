@@ -5,6 +5,7 @@ html {
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    color: white;
 }
 
 .zoneTitle {
@@ -60,6 +61,7 @@ body {
     color: white;
     cursor: pointer;
     text-shadow: black 1px 1px;
+    -webkit-filter: drop-shadow(1px 1px black);
     filter: drop-shadow(1px 1px black);
     left: 50%;
     margin-left: -15px;
@@ -197,12 +199,6 @@ body {
     text-decoration: line-through;
 }
 
-#gaugeTogl {
-    right: 290px;
-    width: 50px;
-    text-decoration: none;
-}
-
 #optionsMenu {
     display: none;
 }
@@ -323,6 +319,17 @@ body {
     background-color: black;
 }
 
+.clifftop {
+    position: absolute;
+    top: -100px;
+    right: 0;
+    border-bottom: 100px solid black;
+    border-left: 10vw solid transparent;
+    height: 0;
+    width: 10vw;
+    z-index: 1;
+}
+
 .cliff {
     position: absolute;
     bottom: 0;
@@ -398,16 +405,98 @@ body {
     left: 30%;
 }
 
+#jellies {
+    max-width: 10%;
+    top: 17000px;
+    left: 40%;
+}
+
+#jellies {
+    -webkit-animation-name: glowing;
+    animation-name: glowing;
+    -webkit-animation-duration: 5s;
+    animation-duration: 5s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+@keyframes glowing {
+    0% {
+        -webkit-filter: drop-shadow(0px 0px 0px white);
+        filter: drop-shadow(0px 0px 0px white);
+    }
+    50% {
+        -webkit-filter: drop-shadow(0px 0px 20px white);
+        filter: drop-shadow(0px 0px 20px white);
+    }
+    100% {
+        -webkit-filter: drop-shadow(0px 0px 0px white);
+        filter: drop-shadow(0px 0px 0px white);
+    }
+}
+
+#angler {
+    max-width: 10%;
+    top: 20000px;
+    left: 15%;
+}
+
+#gulpereel {
+    max-width: 10%;
+    top: 25000px;
+    left: 65%;
+}
+
 #beakedwhale {
     max-width: 15%;
     top: 30000px;
     left: 50%;
 }
 
+#dumbo {
+    max-width: 10%;
+    top: 35000px;
+    left: 15%;
+}
+
+#whalebones {
+    max-width: 15%;
+    top: 39895px;
+    left: 85%;
+}
+
+#tripodfish {
+    max-width: 5%;
+    top: 39995px;
+    left: 72%;
+}
+
 #bigfinsquid {
     max-width: 10%;
     top: 47000px;
-    left: 20%;
+    left: 30%;
+}
+
+#worms {
+    max-width: 85%;
+    top: -45vw;
+    left: 0;
+}
+
+#snailfish{
+    max-width: 5%;
+    top: 79000px;
+    left: 55%;
+}
+
+#whalebonestext{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.textholder{
+    position: absolute;
 }
 
 @media screen and (max-width: 650px) {

@@ -252,20 +252,7 @@ $(document).ready(function () {
             $(".ocean").css("outline", "2px solid white");
         }
     });
-
-     //lines visibility
-     $("#gaugeTogl").on("click", function () {
-
-        $("#presTxt").toggle();
-        $("#depthTxt").toggle();
-
-        if ($("#gaugeTogl").css("text-decoration") === "none solid rgb(255, 255, 255)") {
-            $("#gaugeTogl").css("text-decoration", "line-through");
-        } else {
-            $("#gaugeTogl").css("text-decoration", "none");
-        }
-    });
-
+    
     //gets the position of the minimap when clicked
     $(".minimap").click(function (event) {
         let offset = $(this).offset();
