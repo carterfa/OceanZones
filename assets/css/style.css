@@ -46,7 +46,7 @@ p{
 
 .minimap:hover, .mapZone:hover {
     opacity: 1;
-    cursor: crosshair;
+    cursor: pointer;
 }
 
 #mapslider {

@@ -3,14 +3,14 @@ const presUnits = ["atm", "psi", "bar"];
 let distIdx = 0;
 let presIdx = 0;
 
-let topHt = parseInt($(".top").css("height"));
-
 //depth gauge changes with scrolling
 function depthGauge() {
 
     //calculates correct height
+    let topHt = parseInt($(".top").css("height"));
     const winAdj = $(window).scrollTop() + ($(window).height() / 2);
     let deepm = parseInt((winAdj - topHt) / 10);
+   
 
     let presTxt = "";
     let deepTxt = "";
@@ -106,7 +106,7 @@ function mapScroll(windowTop) {
 function zoneScroll(windowTop) {
 
     let zone;
-    topHt = parseInt($(".top").css("height"));
+    let topHt = parseInt($(".top").css("height"));
 
     //epipelagic zone scrolling
     if (windowTop > topHt && windowTop < 2000 + topHt) {
@@ -151,6 +151,7 @@ function zoneScroll(windowTop) {
 function mapGo(relY) {
     let mapHt = parseInt($(".minimap").css("height"));
     let oceanDpth = parseInt($("#wholeocean").css("height"));
+    let topHt = parseInt($(".top").css("height"));
 
     //calculation to translate part clicked to location on page
     let location = parseInt(((relY * oceanDpth) / mapHt));
@@ -166,7 +167,7 @@ function mapGo(relY) {
         location = deep;
     }
 
-    //console.log(location);
+    console.log(location);
 
     //scrolls to location
     $('html, body').animate({
@@ -241,8 +242,8 @@ $(document).ready(function () {
         }
     });
 
-     //lines visibility
-     $("#linesTogl").on("click", function () {
+    //lines visibility
+    $("#linesTogl").on("click", function () {
 
         if ($("#linesTogl").css("text-decoration") === "none solid rgb(255, 255, 255)") {
             $("#linesTogl").css("text-decoration", "line-through");
@@ -259,7 +260,7 @@ $(document).ready(function () {
         //gets y coordinate after compensating for position of element
         let relY = event.pageY - offset.top;
 
-        console.log(relY);
+        //console.log(relY);
         mapGo(relY);
     });
 
@@ -267,6 +268,12 @@ $(document).ready(function () {
     $("#menu").on("click", function () {
 
         $("#optionsMenu").toggle();
+
+        if ($("#optionsMenu").css("display") === "block") {
+            $("#menu").html("&#10005;");
+        } else {
+            $("#menu").html("&#9776;")
+        }
 
     });
 
