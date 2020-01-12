@@ -10,7 +10,7 @@ function depthGauge() {
     let topHt = parseInt($(".top").css("height"));
     const winAdj = $(window).scrollTop() + ($(window).height() / 2);
     let deepm = parseInt((winAdj - topHt) / 10);
-   
+
 
     let presTxt = "";
     let deepTxt = "";
@@ -148,24 +148,16 @@ function zoneScroll(windowTop) {
 }
 
 //click map to automatically scroll
-function mapGo(relY) {
-    let mapHt = parseInt($(".minimap").css("height"));
-    let oceanDpth = parseInt($("#wholeocean").css("height"));
-    let topHt = parseInt($(".top").css("height"));
-
+function mapGo(location) {
+    //let mapHt = parseInt($(".minimap").css("height"));
     //calculation to translate part clicked to location on page
-    let location = parseInt(((relY * oceanDpth) / mapHt));
-
-    //sets the surface location
-    const surface = topHt - ($(window).height() / 2);
-    const deep = topHt + oceanDpth - ($(window).height() / 2);
-
+    //let location = parseInt(((relY * oceanDpth) / mapHt));
     //goes to surface in position above slider
-    if (relY < 0) {
-        location = surface;
-    } else if (relY > mapHt) {
-        location = deep;
-    }
+    // if (relY < 0) {
+    //     location = surface;
+    // } else if (relY > mapHt) {
+    //     location = deep;
+    // }
 
     console.log(location);
 
@@ -185,7 +177,7 @@ $(document).ready(function () {
     mapScroll(windowTop);
     //sets top and ocean floor
     $(".oceanfloor").css("height", (($(window).height() / 1.5)));
-    $(".top").css("height", (($(window).height() / 1.5)));
+    //$(".top").css("height", (($(window).height() / 1.5)));
 
     //sticky title functions
     $(window).scroll(function () {
@@ -254,15 +246,29 @@ $(document).ready(function () {
         }
     });
 
-    //gets the position of the minimap when clicked
-    $(".minimap").click(function (event) {
-        let offset = $(this).offset();
-        //gets y coordinate after compensating for position of element
-        let relY = event.pageY - offset.top;
 
-        //console.log(relY);
-        mapGo(relY);
+    $(".mapNav").click(function (event) {
+
+        let topHt = parseInt($(".top").css("height"));
+        let oceanDpth = parseInt($("#wholeocean").css("height"));
+        let location = 0;
+
+        switch ($(this).attr("id")) {
+            case "goSurface":
+                break;
+
+            case "mapEpi":
+                location = topHt - ($(window).height() / 2);
+                break;
+
+            case "goDeep":
+                location = topHt + oceanDpth - ($(window).height() / 2);
+                break;
+        }
+
+        mapGo(location);
     });
+
 
     //changes options visibility
     $("#menu").on("click", function () {
